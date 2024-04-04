@@ -1,0 +1,220 @@
+/* Apply styles to the whole body to ensure proper positioning */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the body takes up the full viewport height */
+  margin: 0; /* Remove default margin */
+  font-family: Arial, sans-serif; /* Example font-family */
+}
+
+.Main {
+  
+  display: flex;
+ margin-left: 5%;
+  width: 100%;
+  margin-top: 1%;
+  background-color: white;
+  color: black;
+  justify-content: center;  
+ align-items: center;
+ margin-bottom: 10%;
+}
+
+.Footer {
+margin-bottom: 0;
+  background-color: brown;
+  color: white;
+  height: 50px; /* Adjust height as needed for your footer */
+  display: flex-end;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+}
+
+
+.page-container{
+display: flex;
+flex-direction: column;
+justify-content: center;  
+align-items: center;
+flex: 1; 
+}
+
+.HeaderContainer {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 5%;
+  height: 10%;
+  background-color:white;
+  border-radius: 10px;
+  border: 1px solid  #460f58;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); /* Example box shadow */
+  
+}
+
+.Sidemenu {
+  align-self: center;
+  /* Optional: You can add styling specific to Sidemenu */
+}
+
+.HeaderContent {
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  height: 10%;
+  
+}
+.sidebar{
+ 
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.menu-bars{
+  margin-left: 5rem;
+  font-size: 2rem;
+  background-color: none;
+}
+.nav-menu{
+  margin-left: -10px;
+  background-color: #1c161d;
+  width: auto;
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  transition: 850ms;
+}
+.nav-menu.active {
+left: 0;
+transition: 350ms;
+}
+.nav-text{
+  margin-top: 10%;
+  display: flex;
+  justify-content: start;
+  padding: 5px 0px 5px 2px;
+  height: 60px;
+
+}
+.nav-text a{
+  text-decoration: none;
+  color:white;
+  font-size: 18px;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 3 5px;
+  border-radius: 4px;
+
+}
+
+span{
+  margin: 10px;
+}
+.Top-bar-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 5px;
+
+}
+
+.logo{
+  display: flex;
+  width: 2.5rem;
+  align-self: center;
+  
+}
+
+
+.sidebar{
+  padding: 10px;
+}
+.fabars {
+  
+  color: #460f58 ;
+  font-size: 26px;
+  
+}
+
+.bell {
+  font-size: 35px;
+  color: #460f58;
+  padding: 10px;
+  margin-left: auto; /* Move the bell icon to the right */
+}
+
+.home-container{
+ width: 100%;
+ height: 20rem;
+
+}
+.home-container-1{
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 5%;
+  height: 20%;
+  background-color:white;
+  border-radius: 10px;
+  border: 1px solid  #460f58;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); /* Example box shadow */
+  justify-content: space-between;
+}
+.container-i-icons{
+  font-size: 40px;
+ padding: 10px;
+ color: #460f58;
+}
+.home-container-2{
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 5%;
+  height: 60%;
+  background-color:white;
+  border-radius: 10px;
+  border: 1px solid  #460f58;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); /* Example box shadow */
+  justify-content: space-between;
+
+}
+.home-countainer-3{
+  margin-top: -5%;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+ 
+}
+.home-container1-links {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.home-container1-links a {
+  font-size: 45px;
+  width: calc(12rem - 10px); /* Set the width of each link to one-third minus margin/padding */
+  display: flex;
+  flex-direction: column;
+  height: 6rem;
+  background-color: white;
+  color: #460f58;
+  border-radius: 10px;
+  border: 1px solid #460f58;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); /* Example box shadow */
+  align-items: center; /* Center content vertically */
+  margin-left: 5px;
+}
+
+.home-container1-links span {
+  color: #460f58;
+  font-size: 24px;
+  
+}
