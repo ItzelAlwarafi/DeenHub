@@ -14,7 +14,7 @@ return (
    <>
    
    <div className="Top-bar-container">
-   <Link to='#'className="Top-bar-container">
+   <Link to='/'className="Top-bar-container">
        <img className="logo" src="DeenHubsvg.svg"></img>
    </Link>
    

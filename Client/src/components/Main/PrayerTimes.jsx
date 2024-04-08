@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
+import userContext from '../../UserContext'
 
 export default function PrayerTimes() {
   const [currentDate, setCurrentDate] = useState('')
-  const [geolocation, setGeolocation] = useState({ latitude: '', longitude: '' })
+  const {geolocation, setGeolocation} = useContext(userContext)
   const [prayersData, setPrayersData] = useState([])
 
   useEffect(() => {
@@ -14,6 +15,7 @@ export default function PrayerTimes() {
      
     // Fetch user geolocation
     if (navigator.geolocation) {
+      
       navigator.geolocation.getCurrentPosition(
         position => {
           const latitude = position.coords.latitude

@@ -44,34 +44,20 @@ return(
                 {item.icon}
                 <span>{item.title}</span>
             </Link>
-            
+
             </li>
         )
 })}
   </div>
-
-
 </div>
-
-    <h1> Home </h1>
-
-
-
-
-
+<div className="home-container-4">
+    <h1>Events 
+       
+    </h1>
+</div>
+   
     </div>
-
-  
-   
-
-  
-   
-
     </>
-   
-
 )
-
-
-    
+   
 }
