@@ -1,5 +1,5 @@
 const db = require('../db');
-const {Event } = require('../models')
+const {Event} = require('../models')
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
@@ -34,7 +34,7 @@ const main = async () => {
 
 await Event.insertMany(events)
 console.log('Events Seeded!')
-console.error('Error seeding events:', error)
+
 }
 
 

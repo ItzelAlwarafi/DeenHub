@@ -2,9 +2,12 @@ import { Link } from "react-router-dom"
  import { FaUserCircle } from "react-icons/fa"
  import { BsChatSquareTextFill } from "react-icons/bs"
  import { BsCalendarWeekFill } from "react-icons/bs"
- import { FaUserFriends } from "react-icons/fa";
- import { SideMenuData } from "../SideMenuData";
- 
+ import { FaUserFriends } from "react-icons/fa"
+ import { SideMenuData } from "../SideMenuData"
+import DuasCategories from "./DuasCategories"
+import RandomDuas from './RandomDuas'
+ import Events from './Events'
+
 export default function Home ( ){
 
 
@@ -31,7 +34,8 @@ return(
 </div>
 
 <div className="home-container-2">
-    <h1>duas random qoutes</h1>
+    <RandomDuas/>
+   
 </div>
 <div className="home-countainer-3">
 
@@ -51,9 +55,7 @@ return(
   </div>
 </div>
 <div className="home-container-4">
-    <h1>Events 
-       
-    </h1>
+    <Events/>
 </div>
    
     </div>

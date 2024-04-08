@@ -183,6 +183,7 @@ background-color: white;
   box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.452); /* Example box shadow */
    /* Example box shadow */
   justify-content: space-between;
+  overflow: hidden;
 
 }
 .home-countainer-3{
@@ -224,19 +225,7 @@ background-color: white;
   margin-top: 2px;
   
 }
-.home-container-4{
-  width: 95%;
-  display: flex;
-  flex-direction: row;
-  margin-top: 15%;
-  height: 60%;
-  background-color:white;
-  border-radius: 10px;
-  border: 1px solid  #f4f2f4;
-  box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.452); /* Example box shadow */
-   /* Example box shadow */
-  justify-content: space-between;
-}
+
 .Sign-Up-Container{
   width: 75%;
   display: flex;
@@ -344,4 +333,107 @@ box-shadow: 5px 3px 5px rgba(255, 255, 255, 0.452); /* Example box shadow */
   letter-spacing: 2px;
   
   
+}
+.dua-card{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  height: auto;
+  background-color:rgba(255, 255, 255, 0.348);
+  border-radius: 10px;
+  box-shadow: 5px 3px 5px rgba(255, 255, 255, 0.452); /* Example box shadow */
+  margin: 3%;
+  justify-content: space-between;
+}
+.dua-cards-home {
+display: flex;
+flex-direction: column;
+align-content: center;
+align-items: center;
+justify-content: center;
+  color: #460f58;
+
+}
+.dua-cards-home > label{
+  
+margin-bottom: 1;
+  color: #460f58;
+  text-align: center;
+font-size: larger;
+
+ 
+}
+.dua-cards-home >p{
+ font-size: larger;
+color: #040404;
+margin-top: 5%;
+font-style: italic;
+font-weight: 400;
+letter-spacing: 1px;
+margin-left: 5%;
+ }
+
+.duas-list-container{
+
+  height: 800px;
+  overflow: scroll;
+  
+}
+.dua-card > label{
+ margin-left: 10px;
+ 
+
+}
+.dua-card >p{
+  margin-left: 15px;
+
+ }
+
+ .home-container-4 {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 15%;
+  height: 60%;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #f4f2f4;
+  box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.452);
+  justify-content: space-between;
+  position: relative; /* Add position relative */
+}
+
+.event-cards-home {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px; /* Add border radius */
+}
+
+.event-cards-home > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pageDetails-container{
+width:100%
+
+
+
+}
+.event-cards-details {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin-top: 5%;
+  
+}
+
+.event-cards-details >img{
+
+width: 85%;
+border-radius: 10px;
 }

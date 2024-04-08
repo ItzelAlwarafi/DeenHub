@@ -3,6 +3,7 @@ import Home from '../components/Main/Home'
 import Quranpage from '../components/Main/Quranpage'
 import PrayerTimes from '../components/Main/PrayerTimes'
 import DuasCategories from '../components/Main/DuasCategories'
+import EventDeatails from './Main/EventDeatails'
 
 
 export default function Main(){
@@ -17,7 +18,7 @@ export default function Main(){
         <Route path = '/quran' element= {<Quranpage/>}/>
         <Route path='/prayertimes' element={<PrayerTimes/>}/>
         <Route path='/duas' element={<DuasCategories/>}/>
-       
+        <Route path='/events/:id' element={<EventDeatails/>} />
        </Routes>
        </>
          
