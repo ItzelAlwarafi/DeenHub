@@ -34,11 +34,17 @@ QadrPath is a Muslim social media app designed to connect Muslims around the wor
 
 ## Planning
 
-ERD 
+
 ![Alt Text](planing/Untitled(1).png)
 ![Alt Text](planing/Untitled.png)
 
-
+## WireFrame 
+![Alt Text](planing/Screenshot1.png)
+![Alt Text](planing/Screenshot2.png)
+![Alt Text](planing/Screenshot3.png)
+![Alt Text](planing/Screenshot4.png)
+![Alt Text](planing/Screenshot5.png)
+![Alt Text](planing/Screenshot6.png)
 
 ## Installation
 
@@ -52,14 +58,17 @@ npm install
 npm i axios 
 
 
-##API Endpoints
+## API Endpoints
 
 The application provides the following API endpoints:
 
-GET /users: Get all users
-POST /users: Create a new user
-PATCH /users/:id: Edit user profile
-DELETE /users/:id: Delete user profile
+1.GET /users: Get all users
+
+2.POST /users: Create a new user
+
+3.PATCH /users/:id: Edit user profile
+
+4.DELETE /users/:id: Delete user profile
 
 
 ## contact 
