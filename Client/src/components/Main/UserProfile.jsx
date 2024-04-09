@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-
+import { FaUserCircle } from "react-icons/fa"
 import userContext from "../../UserContext"
 
 export default function UserProfile() {
@@ -53,6 +53,7 @@ export default function UserProfile() {
 
   return (
     <div className='user-profile'>
+       <FaUserCircle className="container-i-profile-icons" />
       <h2>{user.first_name} {user.last_name}</h2>
       <p>Username: {user.user_name}</p>
       <p>Email: {user.email}</p>

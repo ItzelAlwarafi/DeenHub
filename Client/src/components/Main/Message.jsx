@@ -1,70 +1,33 @@
-import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
-import userContext from '../../UserContext';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import io from 'socket.io-client';
+
+const socket = io('http://localhost:3001'); // Replace with your Socket.IO server URL
 
 export default function Message() {
-  let navigate = useNavigate();
-
-  const showUser = (id) => {
-    navigate(`/users/${id}`);
-  };
-
-  const { user, setUser } = useContext(userContext);
   const [messages, setMessages] = useState([]);
   const [content, setContent] = useState('');
-  const [users, setUsers] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filteredUsers, setFilteredUsers] = useState([]);
-
-  const fetchMessages = async () => {
-    try {
-      const response = await axios.get('/messages/:senderId/:receiverId');
-      if (Array.isArray(response.data)) {
-        setMessages(response.data);
-      } else {
-        console.error('Invalid data format for messages:', response.data);
-      }
-    } catch (error) {
-      console.error('Error fetching messages:', error);
-    }
-  };
 
   useEffect(() => {
-    fetchMessages();
-  }, []);
+    // Listen for 'message' event from the server
+    socket.on('message', (message) => {
+      // Update messages state to display the new message
+      setMessages((prevMessages) => [...prevMessages, message]);
+    });
 
-  useEffect(() => {
-    const getUsers = async () => {
-      try {
-        const response = await axios.get('http://localhost:3001/users');
-        setUsers(response.data);
-      } catch (error) {
-        console.log('Error getting users', error);
-      }
+    // Clean up the socket connection on component unmount
+    return () => {
+      socket.disconnect();
     };
-    getUsers();
-  }, []);
-
-  useEffect(() => {
-    setFilteredUsers(
-      users.filter((user) =>
-        user.user_name.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    );
-  }, [searchTerm, users]);
+  }, []); // Only run this effect once on component mount
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/messages', {
-        senderId: 'senderUserId',
-        receiverId: 'receiverUserId',
-        content,
-      });
+      // Send the message to the server using Socket.IO
+      socket.emit('sendMessage', { content });
+
+      // Clear the input field after sending the message
       setContent('');
-      fetchMessages();
     } catch (error) {
       console.error('Error sending message:', error);
     }
@@ -72,45 +35,16 @@ export default function Message() {
 
   return (
     <div className='chat-container'>
-      <div className='add-friend-container'>
-        <label htmlFor='searchInput'>Search User:</label>
-        <input
-          className='search-input'
-          type='text'
-          id='searchInput'
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder='Search for a user...'
-        />
-        {searchTerm !== '' && (
-          <div className='search-results'>
-            {filteredUsers.map((user) => (
-              <div key={user._id}>
-                {/* Use Link component for navigation */}
-                <Link to={`/users/${user._id}`} onClick={() => showUser(user._id)}>
-                  {user.user_name}
-                </Link>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
       <h1>Messages</h1>
       <div className='message-container'>
-        {Array.isArray(messages) &&
-          messages.map((message) => (
-            <div className='messageBox' key={message._id}>
-              <p>{message.content}</p>
-            </div>
-          ))}
+        {messages.map((message, index) => (
+          <div className='messageBox' key={index}>
+            <p>{message.content}</p>
+          </div>
+        ))}
       </div>
       <form onSubmit={handleSubmit}>
-        <input
-          className='message-input'
-          type='text'
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
+        <input className='message-input' type='text' value={content} onChange={(e) => setContent(e.target.value)} />
         <button type='submit'>Send</button>
       </form>
     </div>

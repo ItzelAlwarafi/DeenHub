@@ -3,10 +3,10 @@ import axios from 'axios';
 import userContext from '../../UserContext';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
+import { FaUserCircle } from "react-icons/fa"
 export default function UserSearch() {
   const navigate = useNavigate();
-  const { loggedInUser } = useContext(userContext); // Assuming loggedInUser contains the user's ID
+  const { loggedInUser } = useContext(userContext);
 
   const showUser = (id) => {
     navigate(`/users/${id}`);
@@ -41,8 +41,7 @@ export default function UserSearch() {
     const getFriendships = async () => {
       try {
         const response = await axios.get(`http://localhost:3001/friendships/id/${loggedInUser._id}`);
-        setFriendships(response.data);
-        console.log(friendships)
+        setFriendships(Array.isArray(response.data.friendships) ? response.data.friendships : []);
       } catch (error) {
         console.log('Error getting friendships', error);
       }
@@ -65,26 +64,31 @@ export default function UserSearch() {
         {searchTerm !== '' && (
           <div className='search-results'>
             {filteredUsers.map((user) => (
-              <div key={user._id}>
-                <Link to={`/users/${user._id}`} onClick={() => showUser(user._id)}>
-                  {user.user_name}
+              <div className='search-results-box' key={user._id}>
+                <Link to={`/users/${user._id}`} style={{ textDecoration: 'none' }} onClick={() => showUser(user._id)}>
+                    <div className='card-friend-search'>
+                <FaUserCircle className="friend-i-icons-card" /> <h3 className='search-results-box-name' >   {user.user_name} </h3>
+                </div>
                 </Link>
+                
               </div>
             ))}
           </div>
         )}
       </div>
       <div className='friendship-container'>
-        <h3>Friendships:</h3>
-        <ul>
-          {friendships.map((friendship) => (
-            <li key={friendship._id}>
-              <Link to={`/users/${friendship.user2_id}`} onClick={() => showUser(friendship.user2_id)}>
-                {friendship.user2_id} {/* Assuming you want to display the ID */}
+        <h3>Friends:</h3>
+        <div className='friend-container'>
+          {Array.isArray(friendships) && friendships.map((friendship) => (
+            <div className='friend-card' key={friendship._id}>
+              <Link to={`/users/${friendship.user2_id._id}`} style={{ textDecoration: 'none' }} onClick={() => showUser(friendship.user2_id._id)}>
+              <FaUserCircle className="friend-i-icons" />
+                <h2 className='friend-name' > {friendship.user2_id.user_name}</h2>
               </Link>
-            </li>
+             
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );
