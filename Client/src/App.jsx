@@ -9,11 +9,11 @@ import './App.css';
 
 export default function App() {
   const [loggedIn, setLoggedIn] = useState(false)
-  const [user, setUser] = useState(null)
+  const [loggedInUser, setLoggedInUser] = useState(null)
   const [geolocation, setGeolocation] = useState({ latitude: '', longitude: '' })
   return (
     <div className="App">
-      <UserContext.Provider value={{ loggedIn, setLoggedIn, user, setUser,geolocation, setGeolocation }}>
+      <UserContext.Provider value={{ loggedIn, setLoggedIn,loggedInUser, setLoggedInUser,geolocation, setGeolocation }}>
         {loggedIn ? (
           <>
             <div className="page-container">

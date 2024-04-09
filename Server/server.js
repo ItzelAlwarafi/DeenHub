@@ -27,6 +27,7 @@ app.post('/users', UserController.createUser)
 app.patch('/users/:id', UserController.editUser)
 app.delete('/users/:id', UserController.deleteUser)
 
+app.get('/users/:id',UserController.getUserById);
 
 // CRUD Routes - Duas
 app.get('/duas', DuasController.getAllDuas)
@@ -48,6 +49,7 @@ app.patch('/messages/:id', MessagesControllers.updateMessage);
 app.delete('/messages/:id', MessagesControllers.deleteMessage);
 
 //CRUD Routes - Freindships 
+app.get('/friendships/id/:id', FriendsipControllers.searchFriendshipsByLoggedInUserId);
 app.post('/friendships',FriendsipControllers. createFriendship);
 app.get('/friendships',FriendsipControllers.getFriendships);
 app.patch('/friendships',FriendsipControllers.updateFriendship);
