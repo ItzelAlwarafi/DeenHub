@@ -83,3 +83,4 @@ app.post('/friendships',FriendsipControllers. createFriendship);
 app.get('/friendships',FriendsipControllers.getFriendships);
 app.patch('/friendships',FriendsipControllers.updateFriendship);
 app.delete('/friendships',FriendsipControllers. deleteFriendship);
+

@@ -23,12 +23,11 @@ body {
 .footer {
  margin-top: 450px;
  width: 100%;
-  background-color: #040404;
   color: white;
-  height: 50px; /* Adjust height as needed for your footer */
   display: flex;
   align-items: center; /* Center content vertically */
   justify-content: end; /* Center content horizontally */
+  
 }
 .page-container{
 display: flex;
@@ -597,4 +596,44 @@ border-radius: 10px;
 .container-i-profile-icons{
   font-size: 10rem;
 
+}
+
+.footer-company{
+  display: flex;
+  flex-direction: row;
+  margin-left: 10%;
+justify-content:space-around;
+align-items: center;
+align-content: center;
+
+
+}
+.footer-company-title{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+align-items: center;
+align-content: center;
+
+}
+.footer-company-links{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+align-items: center;
+align-content: center;
+
+}
+.footer-contact{
+ 
+  margin: 15%;
+  
+}
+.footer-support{
+  margin: 5%;
+}
+.footer-social-icons{
+  display: flex;
+  flex-direction: row;
+  
 }
