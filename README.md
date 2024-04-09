@@ -1,6 +1,8 @@
 # QadrPath - Muslim Social Media App
 
-![Alt Text](planing/DeenHubl.png)
+![Alt Text](planing/DeenHub.png)
+![Alt Text](planing/DeenHub.png)
+
 
 ## Description
 
@@ -29,15 +31,35 @@ QadrPath is a Muslim social media app designed to connect Muslims around the wor
 - JWT for authentication
 - Geolocation APIs for location-based features
 
+
+## Planning
+
+ERD 
+
+![Alt Text](planing/Untitled.png)
+![Alt Text](planing/Untitled.png)
+
+
 ## Installation
 
 1. Clone the repository:
 
 git clone https://github.com/your/repository.git
+
 2. Install dependencies:
 
 npm install
 npm i axios 
+
+
+##API Endpoints
+
+The application provides the following API endpoints:
+
+GET /users: Get all users
+POST /users: Create a new user
+PATCH /users/:id: Edit user profile
+DELETE /users/:id: Delete user profile
 
 
 ## contact 
