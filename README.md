@@ -1,7 +1,7 @@
 # QadrPath - Muslim Social Media App
 
 ![Alt Text](planing/DeenHub.png)
-![Alt Text](planing/DeenHub.png)
+![Alt Text](planing/DeenHubl.png)
 
 
 ## Description
