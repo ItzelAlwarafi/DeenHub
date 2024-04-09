@@ -4,6 +4,7 @@ import Quranpage from '../components/Main/Quranpage'
 import PrayerTimes from '../components/Main/PrayerTimes'
 import DuasCategories from '../components/Main/DuasCategories'
 import EventDeatails from './Main/EventDeatails'
+import Message from './Main/Message'
 
 
 export default function Main(){
@@ -19,6 +20,7 @@ export default function Main(){
         <Route path='/prayertimes' element={<PrayerTimes/>}/>
         <Route path='/duas' element={<DuasCategories/>}/>
         <Route path='/events/:id' element={<EventDeatails/>} />
+        <Route path='/message' element={<Message/>}/>
        </Routes>
        </>
          

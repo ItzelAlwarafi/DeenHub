@@ -7,6 +7,7 @@ import { Link } from "react-router-dom"
 import DuasCategories from "./DuasCategories"
 import RandomDuas from './RandomDuas'
  import Events from './Events'
+import Message from "./Message"
 
 export default function Home ( ){
 
@@ -22,9 +23,10 @@ return(
    <Link to = '# '>
    <FaUserCircle className="container-i-icons" />
    </Link>
- <Link to='#'>
- <BsChatSquareTextFill className="container-i-icons"  />
- </Link>
+   <Link to="/message">
+    <BsChatSquareTextFill className="container-i-icons" />
+</Link>
+
  <Link to='#' >
  <FaUserFriends className="container-i-icons" />
  </Link>
