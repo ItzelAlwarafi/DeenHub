@@ -35,9 +35,9 @@ QadrPath is a Muslim social media app designed to connect Muslims around the wor
 ## Planning
 
 ERD 
+![Alt Text](planing/Untitled(1).png)
+![Alt Text](planing/Untitled.png)
 
-![Alt Text](planing/Untitled.png)
-![Alt Text](planing/Untitled.png)
 
 
 ## Installation
