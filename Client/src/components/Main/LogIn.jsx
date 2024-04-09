@@ -3,7 +3,7 @@ import userContext from '../../UserContext.jsx';
 import axios from 'axios';
 
 export default function LogIn() {
-  const { loggedIn, setLoggedIn, setUser } = useContext(userContext);
+  const { loggedIn, setLoggedIn, loggedInUser, setLoggedInUser } = useContext(userContext);
   const [geolocation, setGeolocation] = useState({ latitude: null, longitude: null });
 
   const formInitialState = {
@@ -119,7 +119,7 @@ export default function LogIn() {
         // console.log('Login successful:', user)
         setLoggedIn(true)
         setLogInMessage(<p className='valid' style={{ color: 'green' }}>  Welcome {user.first_name} </p>)
-        setUser(user)
+        setLoggedInUser (user)
 
 
       } else {
