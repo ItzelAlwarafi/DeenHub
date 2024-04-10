@@ -18,6 +18,8 @@ const DuasController = require('./controllers/DuasControllers')
 const EventsController =require('./controllers/EventsControllers')
 const MessagesControllers = require('./controllers/MessagesControllers.js')
 const FriendsipControllers =require('./controllers/FrienshipControllers.js')
+const ChatControllers = require ('./controllers/ChatControllers.js')
+
 
 app.use(cors())
 app.use(express.json())
@@ -83,4 +85,12 @@ app.post('/friendships',FriendsipControllers. createFriendship);
 app.get('/friendships',FriendsipControllers.getFriendships);
 app.patch('/friendships',FriendsipControllers.updateFriendship);
 app.delete('/friendships',FriendsipControllers. deleteFriendship);
+
+//CRUD Routes - Chat 
+app.get('/chats', ChatControllers.getAllChats)
+app.post('/chats', ChatControllers.createChat)
+app.get('/chat/:userId',ChatControllers.findUserChat)
+app.get('/find/:firstId/:secondId',ChatControllers.findChat)
+app.delete('/chat/:chatId',ChatControllers.deleteChat)
+
 

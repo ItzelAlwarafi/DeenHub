@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const userSchema = require('./User');
 const eventSchema = require('./Event');
 const duaSchema = require('./Dua');
-const messageSchema = require('./Message');
+const messageSchema = require('./MessageModel');
 const friendshipSchema  = require('./Friendship')
 
 
