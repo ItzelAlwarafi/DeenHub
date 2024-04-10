@@ -16,10 +16,9 @@ const io = socketIo(server);
 const UserController = require('./controllers/UserControllers')
 const DuasController = require('./controllers/DuasControllers')
 const EventsController =require('./controllers/EventsControllers')
-const MessagesControllers = require('./controllers/MessagesControllers.js')
 const FriendsipControllers =require('./controllers/FrienshipControllers.js')
 const ChatControllers = require ('./controllers/ChatControllers.js')
-
+const MessagesControllers= require('./controllers/MessagesControllers.js')
 
 app.use(cors())
 app.use(express.json())
@@ -73,11 +72,6 @@ app.post('/events', EventsController.createEvent)
 app.patch('/events/:id', EventsController.editEvent)
 app.delete('/events/:id', EventsController.deleteEvent)
 
-//CRUD Routes - messages 
-app.post('/messages', MessagesControllers.createMessage);
-app.get('/messages/:senderId/:receiverId', MessagesControllers.getMessagesBetweenUsers);
-app.patch('/messages/:id', MessagesControllers.updateMessage);
-app.delete('/messages/:id', MessagesControllers.deleteMessage);
 
 //CRUD Routes - Freindships 
 app.get('/friendships/id/:id', FriendsipControllers.searchFriendshipsByLoggedInUserId);
@@ -93,4 +87,9 @@ app.get('/chat/:userId',ChatControllers.findUserChat)
 app.get('/find/:firstId/:secondId',ChatControllers.findChat)
 app.delete('/chat/:chatId',ChatControllers.deleteChat)
 
+//CRUD Routes - messages 
 
+app.post('/message',MessagesControllers.createMessage)
+app.get('/messages',MessagesControllers.getAllMessages)
+app.get('/messages/chatId',MessagesControllers.getMessage)
+app.delete('/message',MessagesControllers.deleteMessage)

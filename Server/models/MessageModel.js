@@ -22,4 +22,4 @@ const messageSchema = new Schema({
     }
 })
 
-module.exports =  messageSchema 
+module.exports =  messageSchema
