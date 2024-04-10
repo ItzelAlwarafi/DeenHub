@@ -90,6 +90,7 @@ app.delete('/chat/:chatId',ChatControllers.deleteChat)
 //CRUD Routes - messages 
 
 app.post('/message',MessagesControllers.createMessage)
+app.get('/messages/:chatId',MessagesControllers.getMessage)
 app.get('/messages',MessagesControllers.getAllMessages)
-app.get('/messages/chatId',MessagesControllers.getMessage)
+
 app.delete('/message',MessagesControllers.deleteMessage)
