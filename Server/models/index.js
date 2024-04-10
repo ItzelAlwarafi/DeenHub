@@ -11,6 +11,8 @@ const Event = mongoose.model('Event', eventSchema);
 const Dua = mongoose.model('Dua', duaSchema);
 const Message = mongoose.model('Message', messageSchema);
 const Friendship = mongoose.model('Friendship',friendshipSchema )
+
+
 module.exports = {
     User,
     Event,
