@@ -12,7 +12,8 @@ export default function Message() {
 
   const { loggedInUser } = useContext(userContext);
   const [chatList, setChatList] = useState([]);
-const [otherUser,SetOtherUser] = useState([])
+
+
 
 
 
@@ -24,6 +25,7 @@ const [otherUser,SetOtherUser] = useState([])
       const updatedChats = await Promise.all(chats.map(async chat => {
         const otherMemberId = chat.members.find(memberId => memberId !== loggedInUser._id);
         const userDataResponse = await axios.get(`http://localhost:3001/users/${otherMemberId}`);
+      
         const userData = userDataResponse.data; // Assuming userDataResponse.data contains user information
         return {
           ...chat,
