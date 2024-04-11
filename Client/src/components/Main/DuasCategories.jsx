@@ -1,7 +1,7 @@
 import {useNavigate} from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-
+import { Link } from 'react-router-dom';
 
 export default function DuasCategories() {
     let navigate = useNavigate()
@@ -30,7 +30,7 @@ if (!duas){
 }else{
 return(
     <div className='duas-list-container'>
-     
+      <Link to='/' className=' links5'  >Back</Link>
      {duas.map((dua) => (
     <div className='dua-card' key={dua._id}>
         <p> {dua.arabic_text}</p>
