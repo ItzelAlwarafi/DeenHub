@@ -11,6 +11,7 @@ export default function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [loggedInUser, setLoggedInUser] = useState(null)
   const [geolocation, setGeolocation] = useState({ latitude: '', longitude: '' })
+  
   return (
     <div className="App">
       <UserContext.Provider value={{ loggedIn, setLoggedIn,loggedInUser, setLoggedInUser,geolocation, setGeolocation }}>

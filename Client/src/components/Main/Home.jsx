@@ -14,7 +14,7 @@ export default function Home() {
 
 const {loggedInUser, setLoggedInUser } = useContext(userContext)
 
-   console.log(loggedInUser)
+   
 
  
 
