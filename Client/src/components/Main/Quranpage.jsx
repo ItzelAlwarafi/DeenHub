@@ -35,8 +35,9 @@ export default function QuranPage() {
     }, [])
 
     return (
-        <div>
-            <h1>Quran Page</h1>
+        <div className='quran-page-container'>
+            <h1>بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</h1>
+            <h2> Bismillahir Rahmanir Raheem  </h2>
             <select id='edition' value={edition} onChange={handleEditionChange}>
                 <option value=''>Select Edition By Name</option>
                 {editionList.map(edition => (
@@ -45,7 +46,7 @@ export default function QuranPage() {
                     </option>
                 ))}
             </select>
-            <div>
+            <div className='quran-display-container'>
                 {quran && quran.data && quran.data.surahs && (
                     <ul>
                         {quran.data.surahs.map(surah => (
@@ -53,7 +54,7 @@ export default function QuranPage() {
                                  <h3>{surah.number}</h3>
                                 <h3>{surah.name}</h3>
                                 <p>{surah.englishNameTranslation}</p>
-                                <ul>
+                              
                                 {surah.ayahs.map(ayah => (
                                         <div key={ayah.number}>
                                             <p>{ayah.number}</p>
@@ -61,7 +62,7 @@ export default function QuranPage() {
                                         </div>
                                         
                                     ))}
-                                </ul>
+                                
                             </div>
                         ))}
                     </ul>

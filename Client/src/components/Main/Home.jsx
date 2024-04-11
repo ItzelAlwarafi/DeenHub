@@ -24,7 +24,7 @@ const {loggedInUser, setLoggedInUser } = useContext(userContext)
                 <Link to='/UserProfile'>
                     <FaUserCircle className="container-i-icons" />
                 </Link>
-                <Link to="/message">
+                <Link to="/messages">
                     <BsChatSquareTextFill className="container-i-icons" />
                 </Link>
                 <Link to='/UserSearch'>
