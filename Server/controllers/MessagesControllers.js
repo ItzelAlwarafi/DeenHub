@@ -1,77 +1,81 @@
-const Message = require('../models/Message');
+const {MessageModel} = require('../models')
 
-// Create a new message
+
 const createMessage = async (req, res) => {
-    try {
-        const { senderId, receiverId, content } = req.body;
-        const newMessage = new Message({ senderId, receiverId, content });
-        await newMessage.save();
-        res.status(201).json(newMessage);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Server Error' });
-    }
-};
+    const { chatId, senderId, text } = req.body
 
-// Get messages between two users
-const getMessagesBetweenUsers = async (req, res) => {
     try {
-        const { senderId, receiverId } = req.params;
-        const messages = await Message.find({
-            $or: [
-                { senderId, receiverId },
-                { senderId: receiverId, receiverId: senderId },
-            ],
-        }).sort({ timestamp: 1 });
-        res.json(messages);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Server Error' });
-    }
-};
+      
+        const message = new MessageModel({
+            chatId,
+            senderId,
+            text
+        })
 
-// Update a message
-const updateMessage = async (req, res) => {
+        // Save the message to the database
+        const savedMessage = await message.save()
+
+        // Send the saved message in the response
+        res.status(201).json(savedMessage)
+    } catch (error) {
+        console.error('Error creating a message:', error);
+        res.status(500).json({ message: 'Error creating a message' })
+    }
+}
+
+const getAllMessages = async (req, res) => {
     try {
-        const { id } = req.params;
-        const { content } = req.body;
-        const updatedMessage = await Message.findByIdAndUpdate(
-            id,
-            { content },
-            { new: true }
-        );
-        if (!updatedMessage) {
-            return res.status(404).json({ message: 'Message not found' });
-        }
-        res.json(updatedMessage);
+        const messages = await MessageModel.find()
+        res.status(200).json(messages)
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Server Error' });
+        console.error('Error fetching messages:', error)
+        res.status(500).json({ message: 'Error fetching messages' })
     }
-};
+}
 
-// Delete a message
 const deleteMessage = async (req, res) => {
+    const { messageId } = req.params
+
     try {
-        const { id } = req.params;
-        const deletedMessage = await Message.findByIdAndDelete(id);
+        const deletedMessage = await MessageModel.findByIdAndDelete(messageId)
+
         if (!deletedMessage) {
-            return res.status(404).json({ message: 'Message not found' });
+            return res.status(404).json({ message: 'Message not found' })
         }
-        res.json({ message: 'Message deleted successfully' });
+
+        res.status(200).json({ message: 'Message deleted successfully', deletedMessage })
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Server Error' });
+        console.error('Error deleting message:', error)
+        res.status(500).json({ message: 'Error deleting message' })
     }
-};
+}
+
+const getMessage = async (req, res) => {
+    const { chatId } = req.params;
+
+    try {
+        console.log('Received chatId:', chatId);
+
+        const messages = await MessageModel.find({  chatId });
+
+        if (!messages || messages.length === 0) {
+            console.log('Messages not found for chatId:', chatId);
+            return res.status(404).json({ message: 'Messages not found for this chatId' });
+        }
+
+        console.log('Found messages:', messages);
+        res.status(200).json(messages);
+    } catch (error) {
+        console.error('Error fetching messages:', error);
+        res.status(500).json({ message: 'Error fetching messages' });
+    }
+}
+
+
 
 module.exports = {
     createMessage,
-    getMessagesBetweenUsers,
-    updateMessage,
-    deleteMessage
-
-
-    
+    getAllMessages,
+    deleteMessage,
+    getMessage
 }
-

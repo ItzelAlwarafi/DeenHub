@@ -70,6 +70,28 @@ The application provides the following API endpoints:
 
 4.DELETE /users/:id: Delete user profile
 
+##  Resorces 
+-https://react-icons-v2.vercel.app/
+-Qibla compas API’s
+https://rapidapi.com/muslim/api/muslim-salat/details
+https://aladhan.com/qibla-api 
+https://muslimsalat.com/api/
+-Quran 
+https://alquran.cloud/api
+https://quranjs.com/
+https://quranenc.com/en/home
+-DUAS
+https://sunnah.com/developers
+https://github.com/sunnah-com/api
+-Dhikr 
+https://dastanapps.com/
+https://pub.dev/documentation/dzikr/latest/
+-https://dhikr.io/
+https://rapidapi.com/wwwdonus/api/dua-and-zikir
+https://www.figma.com/file/saAYyrSmjGXdW5mVWrUQts/Untitled?type=whiteboard&node-id=9-532&t=rIdTGwqSCmP7F3kV-0
+https://socket.io/docs/v4/tutorial/step-1
+https://chat.openai.com/
+https://www.youtube.com/watch?v=zM-zwHfReEY
 
 ## contact 
 - Itzel Alwarafi ([Github](https://github.com/itzelalwarafi) | [LinkedIn](https://www.linkedin.com/in/itzelalwarafi/))

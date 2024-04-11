@@ -1,52 +1,70 @@
 import React, { useState, useEffect } from 'react';
-import io from 'socket.io-client';
-
-const socket = io('http://localhost:3001'); // Replace with your Socket.IO server URL
+import Chat from './Chat';
+import { useContext } from "react"
+import userContext from "../../UserContext"
+import axios from 'axios'; // Changed import statement for Axios
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Message() {
-  const [messages, setMessages] = useState([]);
-  const [content, setContent] = useState('');
+  const navigate = useNavigate();
+  
 
-  useEffect(() => {
-    // Listen for 'message' event from the server
-    socket.on('message', (message) => {
-      // Update messages state to display the new message
-      setMessages((prevMessages) => [...prevMessages, message]);
-    });
+  const { loggedInUser } = useContext(userContext);
+  const [chatList, setChatList] = useState([]);
 
-    // Clean up the socket connection on component unmount
-    return () => {
-      socket.disconnect();
-    };
-  }, []); // Only run this effect once on component mount
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+
+
+
+  const getChatList = async () => {
     try {
-      // Send the message to the server using Socket.IO
-      socket.emit('sendMessage', { content });
-
-      // Clear the input field after sending the message
-      setContent('');
+      const response = await axios.get(`http://localhost:3001/chat/${loggedInUser._id}`);
+      const chats = response.data;
+  
+      const updatedChats = await Promise.all(chats.map(async chat => {
+        const otherMemberId = chat.members.find(memberId => memberId !== loggedInUser._id);
+        const userDataResponse = await axios.get(`http://localhost:3001/users/${otherMemberId}`);
+      
+        const userData = userDataResponse.data; // Assuming userDataResponse.data contains user information
+        return {
+          ...chat,
+          otherMember: userData // Add the other member's data to the chat object
+        };
+      }));
+  
+      setChatList(updatedChats);
+      
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.log('Error getting chat list:', error);
     }
   };
+  useEffect(() => {
+    getChatList();
+  }, [loggedInUser]); // Updated dependency array
+
+  console.log('hello', chatList); 
+  const handleClickChat = (chatId) => {
+    navigate(`/chat/${chatId}`);
+  };
+  
+ 
 
   return (
     <div className='chat-container'>
-      <h1>Messages</h1>
-      <div className='message-container'>
-        {messages.map((message, index) => (
-          <div className='messageBox' key={index}>
-            <p>{message.content}</p>
-          </div>
-        ))}
+      <div className='chat-list-container'>
+        <h1> List of Chats for User </h1>
+        {chatList.map((chat) => (
+  <div key={chat._id}>
+    <Link to={`/messages/${chat._id}`} onClick={() => handleClickChat(chat._id)}>
+  <h3>{chat.otherMember.first_name} {chat.otherMember.last_name}</h3>
+</Link>
+
+  </div>
+))}
+
       </div>
-      <form onSubmit={handleSubmit}>
-        <input className='message-input' type='text' value={content} onChange={(e) => setContent(e.target.value)} />
-        <button type='submit'>Send</button>
-      </form>
+     
     </div>
   );
 }

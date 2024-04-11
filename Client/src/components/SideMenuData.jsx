@@ -26,7 +26,7 @@ export const SideMenuData = [
 
     {
         title: 'Messeges',
-        path: '/messeges',
+        path: '/messages',
         icon:<FiMessageSquare />,
         cName: 'nav-text'
     },

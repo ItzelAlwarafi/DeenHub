@@ -7,6 +7,7 @@ import EventDeatails from './Main/EventDeatails'
 import Message from './Main/Message'
 import UserProfile from './Main/UserProfile'
 import UserSearch from './Main/UserSearch'
+import Chat from './Main/Chat'
 
 
 export default function Main(){
@@ -22,9 +23,11 @@ export default function Main(){
         <Route path='/prayertimes' element={<PrayerTimes/>}/>
         <Route path='/duas' element={<DuasCategories/>}/>
         <Route path='/events/:id' element={<EventDeatails/>} />
-        <Route path='/message' element={<Message/>}/>
+        <Route path='/messages' element={<Message/>}/>
         <Route path='/users/:id' element ={<UserProfile/>}/>
         <Route path='/UserSearch' element = {<UserSearch/>}/>
+        <Route path="/messages/:chatId" element={<Chat />} />
+       
        </Routes>
        </>
          
