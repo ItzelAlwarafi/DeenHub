@@ -65,8 +65,13 @@ export default function PrayerTimes() {
 
   return (
     <>
+    <div className='prayerTime-page'>
+
+  
+     <Link to='/' className=' links3'  >Back</Link>
+
       <div className="container">
-      <Link to='/' className=' links2'  >Back</Link>
+     
         <div className="prayerTimesContainer">
           {isLoading ? ( // Render loading message if isLoading is true
             <div>Loading...</div>
@@ -85,6 +90,7 @@ export default function PrayerTimes() {
             )
           )}
         </div>
+      </div>
       </div>
     </>
   );

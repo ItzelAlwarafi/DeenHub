@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-
+import { Link } from 'react-router-dom';
 export default function QuranPage() {
     const [quran, setQuran] = useState(null)
     const [edition, setEdition] = useState('')
@@ -36,6 +36,7 @@ export default function QuranPage() {
 
     return (
         <div className='quran-page-container'>
+            <Link to='/' className=' links4'  >Back</Link>
             <h1>بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</h1>
             <h2> Bismillahir Rahmanir Raheem  </h2>
             <select id='edition' value={edition} onChange={handleEditionChange}>
