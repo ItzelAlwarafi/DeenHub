@@ -1,34 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
-import userContext from '../../UserContext';
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
+import userContext from '../../UserContext'
 import { useContext } from "react"
+import { Link } from 'react-router-dom'
+
 export default function Chat() {
-    const { loggedInUser } = useContext(userContext);
-    const [messageText, setMessageText] = useState('');
-  const { chatId } = useParams();
-  const [messages, setMessages] = useState([]);
+    const { loggedInUser } = useContext(userContext)
+    const [messageText, setMessageText] = useState('')
+  const { chatId } = useParams()
+  const [messages, setMessages] = useState([])
 
   useEffect(() => {
     const fetchMessages = async () => {
       try {
         const response = await axios.get(`http://localhost:3001/messages/${chatId}`);
-        setMessages(response.data);
+        setMessages(response.data)
       } catch (error) {
-        console.log('Error fetching messages:', error);
+        console.log('Error fetching messages:', error)
       }
-    };
+    }
 
-    fetchMessages();
-  }, [chatId]); // Fetch messages whenever chatId changes
+    fetchMessages()
+  }, [chatId])
 
-  // Log messages whenever it changes
+  
   useEffect(() => {
-    console.log(messages);
-  }, [messages]);
+    console.log(messages)
+  }, [messages])
   const handleMessageChange = (event) => {
-    setMessageText(event.target.value);
-  };
+    setMessageText(event.target.value)
+  }
 
   const handleSendMessage = async () => {
     try {
@@ -36,39 +38,46 @@ export default function Chat() {
         chatId,
         senderId: loggedInUser._id,
         text: messageText,
-      });
+      })
 
-      console.log('Message sent successfully:', response.data);
+      console.log('Message sent successfully:', response.data)
 
-      // Update the messages state to display the sent message
-      setMessages([...messages, response.data]);
+    
+      setMessages([...messages, response.data])
 
-      // Clear the message input after sending
-      setMessageText('');
+      
+      setMessageText('')
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.error('Error sending message:', error)
     }
-  };
+  }
   const formatHour = (timestamp) => {
-    const date = new Date(timestamp);
+    const date = new Date(timestamp)
     let hours = date.getHours();
-    const ampm = hours >= 12 ? 'PM' : 'AM'; // Determine AM or PM
-    hours = hours % 12 || 12; // Convert 24-hour time to 12-hour time
-    return `${hours}:${formatMinutes(date)} ${ampm}`;
+    const ampm = hours >= 12 ? 'PM' : 'AM'
+    hours = hours % 12 || 12
+    return `${hours}:${formatMinutes(date)} ${ampm}`
   };
   
-  // Function to format minutes with leading zero if necessary
+ 
   const formatMinutes = (date) => {
-    let minutes = date.getMinutes();
-    return minutes < 10 ? `0${minutes}` : minutes;
-  };
+    let minutes = date.getMinutes()
+    return minutes < 10 ? `0${minutes}` : minutes
+  }
   return (
     <>
+    <div className='Chat-page'>
+
+   
+     <Link to='/messages' className=' links'>Back</Link>
+
       <div className="chat-box">
         <div className="messages-box-container">
           {messages.map((message) => (
             <div className='message-box' key={message._id}>
-              <h1 className='message-text'>{message.text}</h1>
+                <div className='message-bubble'>
+                    <h1 className='message-text'>{message.text}</h1>
+              </div>
               <p>{formatHour(message.timestamp)}</p> 
             </div>
           ))}
@@ -83,7 +92,7 @@ export default function Chat() {
         <button onClick={handleSendMessage}>Send</button>
         </div>
       </div>
-
+      </div>
     </>
   );
 }

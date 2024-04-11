@@ -5,7 +5,7 @@ import userContext from "../../UserContext"
 import axios from 'axios'; // Changed import statement for Axios
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
+import { FaUserCircle } from "react-icons/fa"
 export default function Message() {
   const navigate = useNavigate();
   
@@ -51,13 +51,16 @@ export default function Message() {
  
 
   return (
+    <> 
+     
     <div className='chat-container'>
-      <div className='chat-list-container'>
+      <Link to='/' className=' links2'  >Back</Link>
+      <div className='/messages'>
         <h1> List of Chats for User </h1>
         {chatList.map((chat) => (
-  <div key={chat._id}>
-    <Link to={`/messages/${chat._id}`} onClick={() => handleClickChat(chat._id)}>
-  <h3>{chat.otherMember.first_name} {chat.otherMember.last_name}</h3>
+  <div className='chats-box' key={chat._id}>
+    <Link to={`/messages/${chat._id}`}style={{ textDecoration: 'none' }} onClick={() => handleClickChat(chat._id)}>
+  <h3> <FaUserCircle className="friend-i-chats-icons" />    {chat.otherMember.first_name} {chat.otherMember.last_name}</h3>
 </Link>
 
   </div>
@@ -66,5 +69,6 @@ export default function Message() {
       </div>
      
     </div>
+    </>
   );
 }
